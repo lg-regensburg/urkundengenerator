@@ -7,7 +7,7 @@ Das skript ```generate.py```  fügt in eine Cosawin-Ergebnisdatei ```Ergebnislis
 
 ## Anpassen des Urkundenformats
 
-Die  Einstellungen für die Urkunden können im Javascript ```init.download.buttons.js``` vorgenommen werden, das Bild (variable ```imgData```) muss vorher in eine Dataurl umgewandelt werden (z.B. [hier](http://dataurl.net/#dataurlmaker)).
+Die  Einstellungen für die Urkunden können im Javascript ```urkundengenerator.js``` vorgenommen werden, das Bild (variable ```imgData```) muss vorher in eine Dataurl umgewandelt werden (z.B. [hier](http://dataurl.net/#dataurlmaker)).
 
 ## Credits
 
