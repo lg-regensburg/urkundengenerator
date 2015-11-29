@@ -1,6 +1,13 @@
-var jsPDFEditor = function() {
-	 
-	var initDownloadPDF = function() {
+var Urkundengenerator = function() {
+
+	var UrkundenLinksHinzufuegen = function() {
+		link = '<td><a href=\"javascript:void(0)\" class=\"download-urkunde\">Urkunde</a></td>';
+		$(".blLeistw").after(link);
+		$(".blLeistg").after(link);
+		$(".KopfZ21").after('<td><a href=\"https://github.com/lg-regensburg/urkundengenerator\" target=\"_blank\">Urkundengenerator<img height=\"40px\" src=\"https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png\" width=\"40px\"/></a></td>');
+	};
+
+	var UrkundenLinksInitialisieren = function() {
 		$('.download-urkunde').click(function(){
 			
 			//TODO, optional: get event-information from header
@@ -45,18 +52,15 @@ var jsPDFEditor = function() {
 		return false;
 	};
 
+
 	return {
 		init: function() {
-			link = '<td><a href=\"javascript:void(0)\" class=\"download-urkunde\">Urkunde</a></td>';
-			$(".blLeistw").after(link);
-			$(".blLeistg").after(link);
-			$(".KopfZ21").after('<td><a href=\"https://github.com/lg-regensburg/urkundengenerator\" target=\"_blank\">Urkundengenerator<img height=\"40px\" src=\"https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png\" width=\"40px\"/></a></td>');
-			initDownloadPDF();
-			
+			UrkundenLinksHinzufuegen();
+			UrkundenLinksInitialisieren();
 		},
 	};
 }();
 
 $(document).ready(function() {
-	jsPDFEditor.init();
+	Urkundengenerator.init();
 });
