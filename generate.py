@@ -12,23 +12,17 @@ outfile = open("Ergebnisliste.htm", 'w', encoding='utf-8')
 
 soup = BeautifulSoup(infile, "html5lib")
 
-#TODO: do not append multiple times
+def add_script(link):
+    script = soup.new_tag('script')
+    script['src'] = link
+    script['type'] = 'text/javascript'
+    return script
+
 for tag in  soup.find_all('meta'):
-
-    script = soup.new_tag('script')
-    script['src'] = 'js/urkundengenerator.js'
-    script['type'] = 'text/javascript'
-    tag.insert_after(script)
-
+    tag.insert_after(add_script('js/urkundengenerator.js'))
     # include jspdf.min.js from a specific commit to avoid compatibility issues
-    script = soup.new_tag('script')
-    script['src'] = 'https://raw.githubusercontent.com/MrRio/jsPDF/67310a9244011256abf5edb72e8d819a5229e7b4/dist/jspdf.min.js'
-    script['type'] = 'text/javascript'
-    tag.insert_after(script)
-
-    script = soup.new_tag('script')
-    script['src'] = 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'
-    tag.insert_after(script)
+    tag.insert_after(add_script('https://raw.githubusercontent.com/MrRio/jsPDF/67310a9244011256abf5edb72e8d819a5229e7b4/dist/jspdf.min.js'))
+    tag.insert_after(add_script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'))
 
 outfile.write(soup.prettify())
 infile.close()
