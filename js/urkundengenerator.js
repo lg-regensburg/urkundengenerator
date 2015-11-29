@@ -29,12 +29,13 @@ var jsPDFEditor = function() {
 			doc.addImage(imgData, 'JPEG', 0, 0, 210, 297);
 
 			doc.setFontSize(25);
-			doc.text(115, 90, veranstaltungsbezeichnung.concat(' ',jahr).replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
-			doc.text(110, 110, name.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
-			doc.text(105, 130, strecke.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
-			doc.text(100, 150, leistung.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
+			// doc.text(115, 90, veranstaltungsbezeichnung.concat(' ',jahr).replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
+			doc.text(115, 110, name.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
+			doc.text(105, 130, verein.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' ').replace(' (LG Telis Finanz)',''));
+			// doc.text(100, 150, leistung.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
+			doc.text(100, 150, strecke.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
 			doc.text(95, 170, rang.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
-			doc.text(90, 190, altersklasse.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
+			// doc.text(90, 190, altersklasse.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
 			
 			var filename = veranstaltungsbezeichnung + jahr + name + '.pdf';
 			filename = filename.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' ');
@@ -46,8 +47,12 @@ var jsPDFEditor = function() {
 
 	return {
 		init: function() {
-
+			link = '<td><a href=\"javascript:void(0)\" class=\"download-urkunde\">Urkunde</a></td>';
+			$(".blLeistw").after(link);
+			$(".blLeistg").after(link);
+			$(".KopfZ21").after('<td><a href=\"https://github.com/lg-regensburg/urkundengenerator\" target=\"_blank\">Urkundengenerator<img height=\"40px\" src=\"https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png\" width=\"40px\"/></a></td>');
 			initDownloadPDF();
+			
 		},
 	};
 }();
