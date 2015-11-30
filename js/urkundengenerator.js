@@ -36,7 +36,7 @@ var Urkundengenerator = function() {
 
 			doc.addImage(imgData, 'JPEG', 0, 0, 210, 297);
 
-			doc.setFontSize(25);
+			doc.setFontSize(21);
 			
 			// Structure: var lines = []; lines.push(name); ... ; var x_position = 115; var y_position = 110; for (var i = 0; i< lines.length; i++){ doc.text(x_position, y_position, lines[i]; x_position = x_position - 5; y_position = y_position+10;}
 
@@ -46,16 +46,17 @@ var Urkundengenerator = function() {
 			lines.push(name.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
 			lines.push(verein.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
 			
-			// lines.push(leistung.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
 			lines.push(strecke.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
 			lines.push(rang.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
-			// lines.push(altersklasse.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
+			lines.push(altersklasse.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
+			lines.push(leistung.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
 			
-			var x_position = 118;
-			var x_step = 6;
-			var y_position = 100;
+			var x_position = 122;
+			var x_step = 5.5;
+			// was 6
+			var y_position = 90;
 			var y_step = 15;
-			var max_line_length = 22;
+			var max_line_length = 28;
 			for (i = 0; i< lines.length; i++){
 				if (lines[i].length < max_line_length){
 					doc.text(x_position, y_position, lines[i]);
@@ -66,7 +67,7 @@ var Urkundengenerator = function() {
 					var line2 = '';
 					var splitted = lines[i].split(' ');
 					for (j= 1; j < splitted.length; j++){
-						if ((line1.length + splitted[j].length) < max_line_length) {
+						if (((line1.length + splitted[j].length) < max_line_length) && (splitted[j].indexOf("(") < 0) && (line2.indexOf("(") < 0)) {
 							line1 = line1+splitted[j]+' ';
 						} else {
 							line2 = line2+splitted[j]+' ';
@@ -82,6 +83,9 @@ var Urkundengenerator = function() {
 				}
 
 			}
+
+			doc.setFontSize(16);
+			doc.text(130, 210, 'Regensburg, 7.12.2015');
 
 			var filename = veranstaltungsbezeichnung + jahr + name + '.pdf';
 			filename = filename.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' ');
