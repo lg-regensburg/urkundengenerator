@@ -1,8 +1,9 @@
 var Urkundengenerator = function() {
 
 	var UrkundenLinksHinzufuegen = function() {
-		link = '<td><a href=\"javascript:void(0)\" class=\"download-urkunde\">Urkunde</a></td>';
+		link = '<td align="justify" style="width: 15px;"><a href=\"javascript:void(0)\" class=\"download-urkunde\"><span style="padding-left:10px; padding-top:5px;" class="glyphicon glyphicon-file" alt="Urkunde"></span></p></a></td>';
 		$(".blLeistw").after(link);
+		link = '<td align="justify" style="background-color: #DDD; width: 15px;"><a href=\"javascript:void(0)\" class=\"download-urkunde\"><span style="padding-left:10px; padding-top:5px;" class="glyphicon glyphicon-file" alt="Urkunde"></span></p></a></td>';
 		$(".blLeistg").after(link);
 		$(".KopfZ21").after('<td><a href=\"https://github.com/lg-regensburg/urkundengenerator\" target=\"_blank\">Urkundengenerator<img height=\"40px\" src=\"https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png\" width=\"40px\"/></a></td>');
 	};
