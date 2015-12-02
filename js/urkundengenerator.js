@@ -47,8 +47,8 @@ var Urkundengenerator = function() {
 			lines.push(verein.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
 			
 			lines.push(strecke.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
-			lines.push(rang.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
 			lines.push(altersklasse.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
+			lines.push(rang.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
 			lines.push(leistung.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' '));
 			
 			var x_position = 122;
@@ -85,7 +85,7 @@ var Urkundengenerator = function() {
 			}
 
 			doc.setFontSize(16);
-			doc.text(130, 210, 'Regensburg, 7.12.2015');
+			doc.text(130, 210, 'Regensburg, 6.12.2015');
 
 			var filename = veranstaltungsbezeichnung + jahr + name + '.pdf';
 			filename = filename.replace(/(?:\r\n|\r|\n)/g, '').replace(/\s\s+/g, ' ');
