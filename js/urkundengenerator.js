@@ -57,10 +57,10 @@ var Urkundengenerator = function() {
 			// was 6
 			var y_position = 90;
 			var y_step = 15;
-			var max_line_length = 28;
+			var max_line_length = 26;
 			for (i = 0; i< lines.length; i++){
 				if (lines[i].length < max_line_length){
-					doc.text(x_position, y_position, lines[i]);
+					doc.text(x_position, y_position, lines[i].replace(/(?:\r\n|\r|\n)/g, ''));
 					x_position -= x_step;
 					y_position += y_step;
 				} else {
@@ -69,18 +69,20 @@ var Urkundengenerator = function() {
 					var splitted = lines[i].split(' ');
 					for (j= 1; j < splitted.length; j++){
 						if (((line1.length + splitted[j].length) < max_line_length) && (splitted[j].indexOf("(") < 0) && (line2.indexOf("(") < 0)) {
-							line1 = line1+splitted[j]+' ';
+							line1 = line1+splitted[j] + ' ';
 						} else {
-							line2 = line2+splitted[j]+' ';
+							line2 = line2+splitted[j] + ' ';
 						}
 					}
 					
 					doc.text(x_position, y_position, line1);
 					x_position -= x_step;
 					y_position += y_step;
-					doc.text(x_position, y_position, line2);
-					x_position -= x_step;
-					y_position += y_step;
+					if (line2 != ''){
+						doc.text(x_position, y_position, line2);
+						x_position -= x_step;
+						y_position += y_step;
+					}
 				}
 
 			}

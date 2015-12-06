@@ -18,6 +18,14 @@ def add_script(link):
     script['type'] = 'text/javascript'
     return script
 
+
+'''
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+<script src="https://raw.githubusercontent.com/MrRio/jsPDF/67310a9244011256abf5edb72e8d819a5229e7b4/dist/jspdf.min.js" type="text/javascript"></script>
+<script src="https://raw.githubusercontent.com/lg-regensburg/urkundengenerator/8874293128a2069b9d7b0ee03fac1bb102bf55c2/js/urkundengenerator.js" type="text/javascript"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" />
+'''
+
 for tag in  soup.find_all('meta'):
     tag.insert_after(add_script('js/urkundengenerator.js'))
     # include jspdf.min.js from a specific commit to avoid compatibility issues
